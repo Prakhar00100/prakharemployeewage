@@ -1,3 +1,5 @@
+import java.util.*;
+
 interface EmpWageBuilder {
        public void computeEmpWage( CompanyEmpWage obj );
 }
@@ -33,18 +35,20 @@ public class EmployeeWage implements EmpWageBuilder {
            companyEmpWage.setTotalEmpWage( totalEmpHrs * companyEmpWage.empRatePerHour );
            System.out.println("Employee Monthly Wage of " + companyEmpWage.getCompanyName() + " is " + companyEmpWage.getTotalEmpWage());
         }
-	     public static void main(String[] args) {
+	//Main Function
+     public static void main(String[] args) {
 	     System.out.println("WELCOME to EMPLOYEE WAGE Computation");
              EmployeeWage emp = new EmployeeWage();
-	      //Array of object of Companyempwage class
-              CompanyEmpWage[] company = new CompanyEmpWage[10];
+	      //ArrayList of Multiple Companies Wage
+
+             ArrayList<CompanyEmpWage> company = new ArrayList<CompanyEmpWage>();
               // assign value to object of Companyempwage
-              company[0] = new CompanyEmpWage("TCS", 40, 20, 100);
-              emp.computeEmpWage(company[0]);
-              company[1] = new CompanyEmpWage("Delloite", 30, 22, 120);
-       	      emp.computeEmpWage(company[1]);
-              company[2] = new CompanyEmpWage("Barclays", 45, 18, 90);
-              emp.computeEmpWage(company[2]);
+              company.add( new CompanyEmpWage("TCS", 40, 20, 100));
+              emp.computeEmpWage(company.get(0));
+              company.add( new CompanyEmpWage("Deloite", 30, 22, 120));
+       	      emp.computeEmpWage(company.get(1));
+              company.add( new CompanyEmpWage("Barclays", 45, 18, 90));
+              emp.computeEmpWage(company.get(2));
     }
 }
       
